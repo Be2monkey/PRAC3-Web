@@ -22,7 +22,7 @@
 
                             <label>player names</label>
                             <textarea class="text-black" rows="10" name="playerNames"></textarea><br>
-                            <input  type="submit">
+                            <input type="submit" class="styled-button" value="Submit">
                         </form>
                     </div>
 
