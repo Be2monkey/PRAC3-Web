@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class TeamsController extends Controller
 {
+
     public function index()
     {
         $teams = Team::all();
@@ -16,6 +17,11 @@ class TeamsController extends Controller
     public function create()
     {
         return view('teams.create');
+    }
+
+    public function inschrijven(Request $request)
+    {
+        return view('teams.inschrijven');
     }
 
     public function store(Request $request)

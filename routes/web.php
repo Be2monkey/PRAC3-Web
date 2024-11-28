@@ -27,6 +27,10 @@ Route::get('/teams', function () {
     return view('teams');
 })->middleware(['auth', 'verified'])->name('teams');
 
+Route::get('/inschrijven', function () {
+    return view('inschrijven');
+})->middleware(['auth', 'verified'])->name('inschrijven');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -36,5 +40,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/teams', [TeamsController::class, 'index'])->name('teams.index');
 Route::get('/teams/create', [TeamsController::class, 'create'])->name('teams.create');
 Route::post('/teams/create', [TeamsController::class, 'store'])->name('teams.store');
+
+Route::get('/inschrijven', [TeamsController::class, 'inschrijven'])->name('teams.inschrijven');
+
 
 require __DIR__.'/auth.php';
