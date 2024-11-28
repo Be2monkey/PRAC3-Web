@@ -21,7 +21,7 @@
                             <input class="text-black border-solid border-2 border-black m-4" type="number" name="numberOfPlayers" value="{{ $team->numberOfPlayers }}"><br>
 
                             <label>player names</label>
-                            <textarea class="text-black border-solid border-2 border-black m-4" rows="10" name="playerNames" value="{{ $team->playerNames }}"></textarea><br>
+                            <textarea class="text-black border-solid border-2 border-black m-4" rows="10" name="playerNames" >{{ $team->playerNames }}</textarea><br>
                             <input type="submit" class="styled-button" value="Submit">
                             </form>
                     </div>
