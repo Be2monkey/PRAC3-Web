@@ -43,5 +43,8 @@ Route::post('/teams/create', [TeamsController::class, 'store'])->name('teams.sto
 
 Route::get('/inschrijven', [TeamsController::class, 'inschrijven'])->name('teams.inschrijven');
 
+Route::get('/teams/edit/{team}', [TeamsController::class, 'edit'])->name('teams.edit');
+Route::post('/teams/edit/{team}', [TeamsController::class, 'update'])->name('teams.update');
+
 
 require __DIR__.'/auth.php';

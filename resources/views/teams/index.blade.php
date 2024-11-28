@@ -11,20 +11,31 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Teams overzicht:") }}
 
-                    <div >
-                        <form action="{{route('teams.store')}}" method="POST">
-                            @csrf
-                            <label>Team name</label>
-                            <input class="text-black border-solid border-2 border-black m-4" type="string" name="teamName"><br>
+                    <a href="{{route('teams.create')}}"></a>
+                        <table>
+                            <thead>
+                                <th>Id </th>
+                                <th>Name </th>
+                                <th>Number of players </th>
+                                <th>Player Names </th>
+                                <th>Acties </th>
+                            </thead>
+                            <tbody>
+                                @foreach ($teams as $team)
+                                    <tr>
+                                        <td>{{$team->id}}</td>
+                                        <td>{{$team->teamName}}</td>
+                                        <td>{{$team->numberOfPlayers}}</td>
+                                        <td>{{$team->playerNames}}</td>
+                                        <td><a href="{{route('teams.edit', $team->id)}}">Edit</a>
 
-                            <label>Number of players</label>
-                            <input class="text-black border-solid border-2 border-black m-4" type="number" name="numberOfPlayers"><br>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
-                            <label>player names</label>
-                            <textarea class="text-black border-solid border-2 border-black m-4" rows="10" name="playerNames"></textarea><br>
-                            <input type="submit" class="styled-button" value="Submit">
-                            </form>
-                    </div>
 
                 </div>
             </div>
