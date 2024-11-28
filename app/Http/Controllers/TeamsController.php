@@ -40,13 +40,10 @@ class TeamsController extends Controller
     }
 
     public function update(Request $request , Team $team){
-        $team->id = $request->id;
         $team->teamName = $request->teamName;
         $team->numberOfPlayers = $request->numberOfPlayers;
         $team->playerNames = $request->playerNames;
         $team->save();
-
-
 
         return redirect()->route('teams.index');
     }
