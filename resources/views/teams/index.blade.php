@@ -28,7 +28,10 @@
                                         <td>{{$team->numberOfPlayers}}</td>
                                         <td>{{$team->playerNames}}</td>
                                         <td><a href="{{route('teams.edit', $team->id)}}">Edit</a>
-
+                                            <form action={{route( 'teams.destroy' , $team->id)}} method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <input type="submit" value="verwijderen">
                                             </form>
                                         </td>
                                     </tr>

@@ -45,6 +45,8 @@ Route::get('/inschrijven', [TeamsController::class, 'inschrijven'])->name('teams
 
 Route::get('/teams/edit/{team}', [TeamsController::class, 'edit'])->name('teams.edit');
 Route::post('/teams/edit/{team}', [TeamsController::class, 'update'])->name('teams.update');
+Route::delete('/teams/delete/{team}', [TeamsController::class, 'destroy'])->name('teams.destroy');
+
 
 
 require __DIR__.'/auth.php';

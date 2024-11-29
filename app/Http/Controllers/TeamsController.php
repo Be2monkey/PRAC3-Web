@@ -47,4 +47,11 @@ class TeamsController extends Controller
 
         return redirect()->route('teams.index');
     }
+
+    public function destroy(Team $team){
+        $team->delete();
+
+        return redirect()->route('teams.index');
+
+    }
 }
