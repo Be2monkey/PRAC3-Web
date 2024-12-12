@@ -13,7 +13,11 @@ class ApiController extends Controller
 
         foreach($teams as $team) {
             $json[] = [
-                "teams" => $team->name,
+                "teams" => $team->teamName,
+                "teams" => $team->numberOfPlayers,
+                "teams" => $team->playerNames,
+
+
             ];
         }
 
