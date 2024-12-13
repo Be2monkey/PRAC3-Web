@@ -10,20 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('matches', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('team1_id');
-            $table->unsignedInteger('team2_id');
-            $table->integer('team1_score')->nullable();
-            $table->int('team2_score')->nullable();
-            $table->text('field');
-            $table->unsignedInteger('referee_id');
-            $table->string('time');
-            $table->timestamps();
-        });
-    }
-
+        {
+            Schema::create('matches', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('team1_id'); // Example for an unsigned big integer
+                $table->unsignedBigInteger('team2_id');
+                $table->integer('team1_score')->nullable();
+                $table->integer('team2_score')->nullable();
+                $table->text('field');
+                $table->unsignedBigInteger('referee_id');
+                $table->string('time');
+                $table->timestamps();
+            });
+        }
     /**
      * Reverse the migrations.
      */
