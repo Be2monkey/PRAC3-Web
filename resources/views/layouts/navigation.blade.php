@@ -24,6 +24,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('wedstrijden.index')" :active="request()->routeIs('wedstrijden.index')">
+                        {{ __('Wedstrijden') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('teams.inschrijven')" :active="request()->routeIs('teams.inschrijven')">
                         {{ __('Inschrijven') }}
                     </x-nav-link>

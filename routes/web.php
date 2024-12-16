@@ -27,6 +27,10 @@ Route::get('/teams', function () {
     return view('teams');
 })->middleware(['auth', 'verified'])->name('teams');
 
+Route::get('/wedstrijden', function () {
+    return view('wedstrijden');
+})->middleware(['auth', 'verified'])->name('wedstrijden.index');
+
 Route::get('/inschrijven', function () {
     return view('inschrijven');
 })->middleware(['auth', 'verified'])->name('inschrijven');
