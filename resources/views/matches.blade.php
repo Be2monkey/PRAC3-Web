@@ -22,19 +22,37 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 @foreach ($matches as $match)
                                     <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
-                                        <h2 class="text-lg font-semibold mb-2">{{ $match->team1->name }} vs {{ $match->team2->name }}</h2>
+                                        <!-- Match Status -->
+                                        <h2 class="text-lg font-semibold mb-2">
+                                            {{ $match->team1->name }} vs {{ $match->team2->name }}
+                                        </h2>
+
+                                        @if($match->team1->points === null && $match->team2->points === null)
+                                            <p class="text-red-500 text-sm mb-2">Match Status: Unfinished</p>
+                                        @else
+                                            <p class="text-green-500 text-sm mb-2">Match Status: Finished</p>
+                                        @endif
+
+                                        <!-- Team 1 Info -->
                                         <p class="text-sm">Team 1: {{ $match->team1->name }}</p>
-                                        <p class="text-sm">Punten team 1: {{ $match->team1->points }}</p>
+                                        @if($match->team1->points !== null)
+                                            <p class="text-sm">Points for Team 1: {{ $match->team1->points }}</p>
+                                        @endif
+
+                                        <!-- Team 2 Info -->
                                         <p class="text-sm">Team 2: {{ $match->team2->name }}</p>
-                                        <p class="text-sm">Punten team 2: {{ $match->team2->points }}</p>
+                                        @if($match->team2->points !== null)
+                                            <p class="text-sm">Points for Team 2: {{ $match->team2->points }}</p>
+                                        @endif
+
                                         @if(auth()->check() && auth()->user()->admin === 1)
-                                        <a href="{{ route('matches.edit', ['match' => $match->id]) }}" class="text-blue-500 hover:underline">edit / add results</a>
-                                        <form action="{{ route('matches.destroy', $match->id) }}" method="POST" class="inline-block ml-2">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="text-red-500 hover:underline">delete match?</button>
-                                            @endif
-                                        </form>
+                                            <a href="{{ route('matches.edit', ['match' => $match->id]) }}" class="text-blue-500 hover:underline">Edit / Add Results</a>
+                                            <form action="{{ route('matches.destroy', $match->id) }}" method="POST" class="inline-block ml-2">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="text-red-500 hover:underline">Delete Match?</button>
+                                            </form>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>
