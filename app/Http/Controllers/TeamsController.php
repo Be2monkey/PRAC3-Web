@@ -10,7 +10,7 @@ class TeamsController extends Controller
 
     public function index()
     {
-        $teams = Team::all();
+        $teams = Team::with('creator')->get(); // Load the creator relationship
         return view('teams.index')->with('teams', $teams);
     }
 
@@ -27,9 +27,10 @@ class TeamsController extends Controller
     public function store(Request $request)
     {
         $newTeam = new Team();
-        $newTeam->teamName = $request->teamName;
-        $newTeam->numberOfPlayers = $request->numberOfPlayers;
-        $newTeam->playerNames = $request->playerNames;
+        $newTeam->name = $request->teamName;
+        $newTeam->points = $request->points;
+        $newTeam->creator_id = auth()->id();
+
         $newTeam->save();
 
         return redirect()->route('teams.index');
@@ -40,9 +41,9 @@ class TeamsController extends Controller
     }
 
     public function update(Request $request , Team $team){
-        $team->teamName = $request->teamName;
-        $team->numberOfPlayers = $request->numberOfPlayers;
-        $team->playerNames = $request->playerNames;
+        $team->name = $request->teamName;
+        $team->creator_id = auth()->id();
+        $team->points = $request->points;
         $team->save();
 
         return redirect()->route('teams.index');

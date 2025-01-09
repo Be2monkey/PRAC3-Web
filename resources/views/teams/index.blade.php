@@ -14,20 +14,17 @@
                     <a href="{{route('teams.create')}}"></a>
                         <table>
                             <thead>
-                                <th>Id </th>
                                 <th>Name </th>
-                                <th>Number of players </th>
-                                <th>Player Names </th>
+                                <th>points</th>
+                                <th>creator</th>
                                 <th>Acties </th>
                             </thead>
                             <tbody>
                                 @foreach ($teams as $team)
                                     <tr>
-                                        <td>{{$team->id}}</td>
                                         <td>{{$team->teamName}}</td>
-                                        <td>{{$team->numberOfPlayers}}</td>
-                                        <td>{{$team->playerNames}}</td>
-                                        <td><a href="{{route('teams.edit', $team->id)}}">Edit</a>
+                                        <td>{{$team->points}}</td>
+                                        <td>{{ $team->creator->name }}</td>                                        <td><a href="{{route('teams.edit', $team->id)}}">Edit</a>
                                             <form action={{route( 'teams.destroy' , $team->id)}} method="POST">
                                                 @csrf
                                                 @method('delete')

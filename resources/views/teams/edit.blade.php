@@ -15,13 +15,11 @@
                         <form action="{{ route('teams.update', ['team' => $team->id]) }}" method="POST">
                             @csrf
                             <label>Team name</label>
-                            <input class="text-black border-solid border-2 border-black m-4" type="string" name="teamName" value="{{ $team->teamName }}"><br>
+                            <input class="text-black border-solid border-2 border-black m-4" type="string" name="teamName"><br>
 
-                            <label>Number of players</label>
-                            <input class="text-black border-solid border-2 border-black m-4" type="number" name="numberOfPlayers" value="{{ $team->numberOfPlayers }}"><br>
+                            <label>points</label>
+                            <input class="text-black border-solid border-2 border-black m-4" type="number" name="points"><br>
 
-                            <label>player names</label>
-                            <textarea class="text-black border-solid border-2 border-black m-4" rows="10" name="playerNames" >{{ $team->playerNames }}</textarea><br>
                             <input type="submit" class="styled-button" value="Submit">
                             </form>
                     </div>

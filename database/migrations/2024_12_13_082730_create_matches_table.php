@@ -19,6 +19,10 @@ return new class extends Migration
                 $table->integer('team2_score')->nullable();
                 $table->text('field');
                 $table->unsignedBigInteger('referee_id');
+
+                $table->foreign('referee_id')
+                      ->references('id')
+                      ->on('users');
                 $table->string('time');
                 $table->timestamps();
             });
