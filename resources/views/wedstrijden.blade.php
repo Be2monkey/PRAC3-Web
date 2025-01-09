@@ -15,12 +15,14 @@
                     @endif
                     <div>
                     <h1>Upcoming matches</h1>
-
-                        @foreach ($matches as $match )
-                            <p>Team 1: {{ $match->team1->name }}</p>
-                            <p>Team 2: {{ $match->team2->name }}</p>
-                        @endforeach
-
+                    @if(!empty($matches) && $matches->count())
+                    @foreach ($matches as $match)
+                        <p>Team 1: {{ $match->team1->name }}</p>
+                        <p>Team 2: {{ $match->team2->name }}</p>
+                    @endforeach
+                @else
+                    <p>No matches available.</p>
+                @endif
                     </div>
                 </div>
             </div>

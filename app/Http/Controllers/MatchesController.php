@@ -9,6 +9,7 @@ use App\Models\Amatch;
 class MatchesController extends Controller
 {
 
+
     public function matches()
     {
         // Eager load team1 and team2 relationships
