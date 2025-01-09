@@ -24,7 +24,7 @@
                                     <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
                                         <!-- Match Status -->
                                         <h2 class="text-lg font-semibold mb-2">
-                                            {{ $match->team1->name }} vs {{ $match->team2->name }}
+                                            {{ $match->name }}
                                         </h2>
 
                                         @if($match->team1->points === null && $match->team2->points === null)
@@ -33,17 +33,24 @@
                                             <p class="text-green-500 text-sm mb-2">Match Status: Finished</p>
                                         @endif
 
-                                        <!-- Team 1 Info -->
-                                        <p class="text-sm">Team 1: {{ $match->team1->name }}</p>
-                                        @if($match->team1->points !== null)
-                                            <p class="text-sm">Points for Team 1: {{ $match->team1->points }}</p>
-                                        @endif
+                                        <!-- Time -->
+                                        <p class="text-sm mb-2">Time: {{ $match->time }}</p>
 
-                                        <!-- Team 2 Info -->
-                                        <p class="text-sm">Team 2: {{ $match->team2->name }}</p>
-                                        @if($match->team2->points !== null)
-                                            <p class="text-sm">Points for Team 2: {{ $match->team2->points }}</p>
-                                        @endif
+                                        <!-- Team 1 Info with Points -->
+                                        <div class="flex justify-between items-center mb-2">
+                                            <p class="text-sm">{{ $match->team1->name }}</p>
+                                            @if($match->team1->points !== null)
+                                                <p class="text-sm font-bold">{{ $match->team1->points }}</p>
+                                            @endif
+                                        </div>
+
+                                        <!-- Team 2 Info with Points -->
+                                        <div class="flex justify-between items-center mb-2">
+                                            <p class="text-sm">{{ $match->team2->name }}</p>
+                                            @if($match->team2->points !== null)
+                                                <p class="text-sm font-bold">{{ $match->team2->points }}</p>
+                                            @endif
+                                        </div>
 
                                         @if(auth()->check() && auth()->user()->admin === 1)
                                             <a href="{{ route('matches.edit', ['match' => $match->id]) }}" class="text-blue-500 hover:underline">Edit / Add Results</a>
