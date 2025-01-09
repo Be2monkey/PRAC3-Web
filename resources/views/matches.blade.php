@@ -24,7 +24,17 @@
                                     <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
                                         <h2 class="text-lg font-semibold mb-2">{{ $match->team1->name }} vs {{ $match->team2->name }}</h2>
                                         <p class="text-sm">Team 1: {{ $match->team1->name }}</p>
+                                        <p class="text-sm">Punten team 1: {{ $match->team1->points }}</p>
                                         <p class="text-sm">Team 2: {{ $match->team2->name }}</p>
+                                        <p class="text-sm">Punten team 2: {{ $match->team2->points }}</p>
+                                        @if(auth()->check() && auth()->user()->admin === 1)
+                                        <a href="{{ route('matches.edit', ['match' => $match->id]) }}" class="text-blue-500 hover:underline">edit / add results</a>
+                                        <form action="{{ route('matches.destroy', $match->id) }}" method="POST" class="inline-block ml-2">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="text-red-500 hover:underline">delete match?</button>
+                                            @endif
+                                        </form>
                                     </div>
                                 @endforeach
                             </div>

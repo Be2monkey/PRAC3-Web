@@ -55,5 +55,8 @@ Route::delete('/teams/delete/{team}', [TeamsController::class, 'destroy'])->name
 Route::get('/matches', [MatchesController::class, 'matches'])->name('matches');
 Route::get('/matches/create', [MatchesController::class, 'create'])->name('matches.create');
 Route::post('/matches/create', [MatchesController::class, 'store'])->name('matches.store');
+Route::get('/matches/edit/{match}', [MatchesController::class, 'edit'])->name('matches.edit');
+Route::post('/matches/edit/{match}', [MatchesController::class, 'update'])->name('matches.update');
+Route::delete('/matches/{match}', [MatchesController::class, 'destroy'])->name('matches.destroy');
 
 require __DIR__.'/auth.php';

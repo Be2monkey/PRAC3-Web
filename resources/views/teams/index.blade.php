@@ -16,7 +16,6 @@
                             <thead class="bg-gray-100 dark:bg-gray-700">
                                 <tr>
                                     <th class="px-4 py-2 border border-gray-200 dark:border-gray-600 text-left">Naam</th>
-                                    <th class="px-4 py-2 border border-gray-200 dark:border-gray-600 text-left">Punten</th>
                                     <th class="px-4 py-2 border border-gray-200 dark:border-gray-600 text-left">Maker</th>
                                     @if(auth()->check() && auth()->user()->admin === 1)
                                         <th class="px-4 py-2 border border-gray-200 dark:border-gray-600 text-left">Acties</th>
@@ -27,7 +26,6 @@
                                 @foreach ($teams as $team)
                                     <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                                         <td class="px-4 py-2 border border-gray-200 dark:border-gray-600">{{ $team->name }}</td>
-                                        <td class="px-4 py-2 border border-gray-200 dark:border-gray-600">{{ $team->points }}</td>
                                         <td class="px-4 py-2 border border-gray-200 dark:border-gray-600">{{ $team->creator->name }}</td>
                                         @if(auth()->check() && auth()->user()->admin === 1 || auth()->user()->id === $team->creator_id)
                                             <td class="px-4 py-2 border border-gray-200 dark:border-gray-600">

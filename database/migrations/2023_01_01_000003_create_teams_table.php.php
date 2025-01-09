@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('points')->default(0);
+            $table->unsignedBigInteger('points')->default(0)->nullable();
             $table->unsignedBigInteger('creator_id');
             $table->timestamps();
         });

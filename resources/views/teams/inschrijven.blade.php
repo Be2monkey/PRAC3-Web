@@ -24,15 +24,7 @@
                                     required>
                             </div>
 
-                            <div>
-                                <label for="points" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Punten</label>
-                                <input
-                                    id="points"
-                                    type="number"
-                                    name="points"
-                                    class="mt-1 block w-full text-black border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
-                                    required>
-                            </div>
+
 
                             <div>
                                 <button
