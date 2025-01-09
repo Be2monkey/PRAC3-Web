@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamsController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,8 @@ Route::get('/teams/edit/{team}', [TeamsController::class, 'edit'])->name('teams.
 Route::post('/teams/edit/{team}', [TeamsController::class, 'update'])->name('teams.update');
 Route::delete('/teams/delete/{team}', [TeamsController::class, 'destroy'])->name('teams.destroy');
 
-
+Route::get('/matches', [MatchesController::class, 'matches'])->name('matches');
+Route::get('/matches/create', [MatchesController::class, 'create'])->name('matches.create');
+Route::post('/matches/create', [MatchesController::class, 'store'])->name('matches.store');
 
 require __DIR__.'/auth.php';

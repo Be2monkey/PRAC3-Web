@@ -17,19 +17,24 @@
                                 <th>Name </th>
                                 <th>points</th>
                                 <th>creator</th>
+                                @if(auth()->check() && auth()->user()->admin === 1)
                                 <th>Acties </th>
+                                @endif
                             </thead>
                             <tbody>
                                 @foreach ($teams as $team)
                                     <tr>
-                                        <td>{{$team->teamName}}</td>
+                                        <td>{{$team->name}}</td>
                                         <td>{{$team->points}}</td>
-                                        <td>{{ $team->creator->name }}</td>                                        <td><a href="{{route('teams.edit', $team->id)}}">Edit</a>
-                                            <form action={{route( 'teams.destroy' , $team->id)}} method="POST">
+                                        <td>{{ $team->creator->name }}</td>
+                                            @if(auth()->check() && auth()->user()->admin === 1 || auth()->user()->id === $team->creator_id)
+                                            <td><a href="{{route('teams.edit', $team->id)}}">Edit</a>
+                                            <form action="{{ route('teams.destroy', $team->id) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
                                                 <input type="submit" value="verwijderen">
                                             </form>
+                                        @endif
                                         </td>
                                     </tr>
                                 @endforeach

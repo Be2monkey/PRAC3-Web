@@ -37,7 +37,9 @@ class TeamsController extends Controller
     }
 
     public function edit(Team $team){
-        return view('teams.edit', ['team' => $team]);
+        if (auth()->check() && (auth()->user()->admin === 1 || auth()->user()->id === $team->creator_id)) {
+            return view('teams.edit', ['team' => $team]);
+        }
     }
 
     public function update(Request $request , Team $team){
