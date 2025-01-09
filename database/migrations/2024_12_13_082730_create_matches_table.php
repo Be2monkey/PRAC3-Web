@@ -13,6 +13,7 @@ return new class extends Migration
         {
             Schema::create('matches', function (Blueprint $table) {
                 $table->id();
+                $table->string('name');
                 $table->unsignedBigInteger('team1_id'); // Example for an unsigned big integer
                 $table->unsignedBigInteger('team2_id');
                 $table->integer('team1_score')->nullable();
