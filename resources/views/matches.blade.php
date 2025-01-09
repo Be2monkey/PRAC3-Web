@@ -11,17 +11,25 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
                     @if(auth()->check() && auth()->user()->admin === 1)
-                    <a href="{{ route('matches.create') }}">Create match</a>
+                        <div class="mb-4">
+                            <a href="{{ route('matches.create') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Create Match</a>
+                        </div>
                     @endif
+
                     <div>
-                        <h1>Matches:</h1>
+                        <h1 class="text-2xl font-bold mb-4">Matches:</h1>
                         @if($matches->isNotEmpty())
-                            @foreach ($matches as $match)
-                                <p>Team 1: {{ $match->team1->name }}</p>
-                                <p>Team 2: {{ $match->team2->name }}</p>
-                            @endforeach
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                @foreach ($matches as $match)
+                                    <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
+                                        <h2 class="text-lg font-semibold mb-2">{{ $match->team1->name }} vs {{ $match->team2->name }}</h2>
+                                        <p class="text-sm">Team 1: {{ $match->team1->name }}</p>
+                                        <p class="text-sm">Team 2: {{ $match->team2->name }}</p>
+                                    </div>
+                                @endforeach
+                            </div>
                         @else
-                            <p>No matches available.</p>
+                            <p class="text-gray-600 dark:text-gray-400">No matches available.</p>
                         @endif
                     </div>
                 </div>

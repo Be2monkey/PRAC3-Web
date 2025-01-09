@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('points')->default(0);
-            $table->unsignedBigInteger('creator_id'); // Add the creator_id column without foreign key constraint
+            $table->unsignedBigInteger('creator_id');
             $table->timestamps();
         });
     }

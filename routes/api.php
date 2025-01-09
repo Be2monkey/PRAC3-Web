@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/teams', [ApiController::class, 'getTeams']);
+
+Route::get('/matches', [ApiController::class, 'matches']);
